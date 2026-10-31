@@ -1,0 +1,23 @@
+[package]
+name = "loguru"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+description = "An ergonomic logging library for Rust, inspired by Python's loguru, with multi-instance named loggers in the style of Python's logging module."
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/loguru-rs/loguru-rs"
+keywords = ["logging", "logger", "loguru", "log"]
+categories = ["development-tools::debugging"]
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+flate2 = { version = "1", optional = true }
+
+[features]
+# Enable gzip compression of rotated log files (FileSink `with_compression`).
+compression = ["dep:flate2"]
+
+[[example]]
+name = "demo"
+path = "examples/demo.rs"
